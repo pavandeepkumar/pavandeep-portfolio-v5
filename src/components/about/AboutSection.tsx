@@ -1,71 +1,76 @@
 import React from 'react';
+import { BrowserIcon, CloudIcon, DatabaseIcon } from './AboutIcons';
+import { BackendIcon, LlmIcon } from '../ai/AiIcons';
 import { ArchitectureFlow } from './ArchitectureFlow';
+import { PillarVisual } from './PillarVisual';
+import { Section } from '../layout/Section';
+import { TechTags } from '../ui/Tag';
 import { profileData } from '../../data/profile';
-import { CheckCircle2, ShieldAlert, Cpu, Network, Sparkles, Terminal } from 'lucide-react';
+
+const pillars = [
+  {
+    icon: BrowserIcon,
+    area: 'Frontend',
+    stack: ['React', 'Next.js'],
+    text: 'Responsive layouts, state synchronization, client performance, and accessible design.'
+  },
+  {
+    icon: BackendIcon,
+    area: 'Backend',
+    stack: ['Node.js', 'NestJS'],
+    text: 'Modular enterprise structure, dependency injection, validation guards, and REST/gRPC.'
+  },
+  {
+    icon: DatabaseIcon,
+    area: 'Database',
+    stack: ['PostgreSQL', 'Redis'],
+    text: 'Relational schemas, ACID transactions, composite indexing, and sub-millisecond caching.'
+  },
+  {
+    icon: CloudIcon,
+    area: 'Infrastructure',
+    stack: ['AWS', 'Docker'],
+    text: 'Multi-stage container builds, Docker Compose meshes, EC2 hosts, and automated CI/CD.'
+  },
+  {
+    icon: LlmIcon,
+    area: 'AI engineering',
+    stack: ['RAG', 'Tool calling'],
+    text: 'Connecting generative reasoning with deterministic backend APIs and transactional workflows.'
+  }
+];
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-24 border-b border-white/[0.08] relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-14">
-          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase tracking-wider mb-2">
-            <span>FULL-LIFECYCLE PRODUCT ENGINEERING</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-            Engineering with a product mindset.
-          </h2>
-          <p className="text-base sm:text-lg text-slate-300 mt-4 leading-relaxed font-normal">
-            Software does not exist in isolation. I don't simply assemble UI screens or write isolated database queries—I work across the complete architecture: from user interaction loops and API Gateway ingress, to inter-service gRPC RPCs, PostgreSQL ACID guarantees, and automated container orchestration.
-          </p>
-        </div>
+    <Section
+      id="about"
+      index="02"
+      label="About"
+      title={
+        <>
+          I care about the whole request, <em>not just my layer of it.</em>
+        </>
+      }
+      intro={profileData.aboutIntroduction}
+    >
+      <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        {pillars.map(({ icon: Icon, area, stack, text }, i) => (
+          <li key={area} className="group flex flex-col rounded-lg border border-line bg-raised p-4 transition-colors hover:border-line-strong">
+            <PillarVisual area={area} />
+            <div className="mt-4 flex items-center justify-between">
+              <Icon className="h-10 w-10 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:rotate-[-4deg]" />
+              <span className="font-mono text-[11px] text-faint">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <p className="mt-2 text-ink">{area}</p>
+            <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{text}</p>
+            <TechTags items={stack} className="mt-auto pt-4" />
+          </li>
+        ))}
+      </ol>
 
-        {/* 5 Core Pillars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-12">
-          <div className="p-4 rounded-lg bg-white/[0.02] border border-white/[0.08]">
-            <div className="text-xs font-mono text-cyan-400">01. FRONTEND</div>
-            <div className="font-semibold text-white mt-1">React & Next.js</div>
-            <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
-              Responsive layouts, state synchronization, client performance, and accessible design.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-lg bg-white/[0.02] border border-white/[0.08]">
-            <div className="text-xs font-mono text-sky-400">02. BACKEND</div>
-            <div className="font-semibold text-white mt-1">Node.js & NestJS</div>
-            <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
-              Modular enterprise structure, dependency injection, validation guards, and REST/gRPC.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-lg bg-white/[0.02] border border-white/[0.08]">
-            <div className="text-xs font-mono text-emerald-400">03. DATABASE</div>
-            <div className="font-semibold text-white mt-1">PostgreSQL & Redis</div>
-            <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
-              Relational schemas, ACID transactions, composite indexing, and sub-millisecond caching.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-lg bg-white/[0.02] border border-white/[0.08]">
-            <div className="text-xs font-mono text-purple-400">04. INFRASTRUCTURE</div>
-            <div className="font-semibold text-white mt-1">AWS & Docker</div>
-            <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
-              Multi-stage container builds, Docker Compose meshes, EC2 hosts, and automated CI/CD.
-            </p>
-          </div>
-
-          <div className="p-4 rounded-lg bg-white/[0.02] border border-white/[0.08]">
-            <div className="text-xs font-mono text-pink-400">05. AI ENGINEERING</div>
-            <div className="font-semibold text-white mt-1">RAG & Tool Calling</div>
-            <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
-              Connecting generative reasoning with deterministic backend APIs and transactional workflows.
-            </p>
-          </div>
-        </div>
-
-        {/* Interactive Architecture Flow Canvas */}
+      <div className="mt-16">
         <ArchitectureFlow />
       </div>
-    </section>
+    </Section>
   );
 };

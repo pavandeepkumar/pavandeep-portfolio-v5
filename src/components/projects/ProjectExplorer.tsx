@@ -1,35 +1,25 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { projectsData } from '../../data/projects';
 import { Project } from '../../types/portfolio';
 import { FeaturedProjectCard } from './FeaturedProjectCard';
 import { ProjectModal } from './ProjectModal';
-import { Search, SlidersHorizontal, Terminal, Filter } from 'lucide-react';
+import { Section } from '../layout/Section';
+import { LayoutGrid } from 'lucide-react';
+import { domainIcon } from './projectIcons';
+
+const filters = ['All', 'Backend', 'Full Stack', 'Microservices', 'AI', 'FinTech', 'SaaS', 'Mobile', 'Enterprise'];
+
+const matchesFilter = (project: Project, filter: string) =>
+  filter === 'All' || project.category === filter || project.tags.includes(filter);
 
 export const ProjectExplorer: React.FC = () => {
   const [selectedFilter, setSelectedFilter] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedModalProject, setSelectedModalProject] = useState<Project | null>(null);
 
-  const filters = [
-    'All',
-    'Backend',
-    'Full Stack',
-    'Microservices',
-    'AI',
-    'FinTech',
-    'SaaS',
-    'Mobile',
-    'Enterprise'
-  ];
-
   const filteredProjects = useMemo(() => {
+    const query = searchQuery.toLowerCase().trim();
     return projectsData.filter((project) => {
-      const matchesFilter =
-        selectedFilter === 'All' ||
-        project.category === selectedFilter ||
-        project.tags.includes(selectedFilter);
-
-      const query = searchQuery.toLowerCase().trim();
       const matchesSearch =
         !query ||
         project.title.toLowerCase().includes(query) ||
@@ -37,115 +27,141 @@ export const ProjectExplorer: React.FC = () => {
         project.technologies.some((t) => t.toLowerCase().includes(query)) ||
         project.summary.toLowerCase().includes(query) ||
         project.problem.toLowerCase().includes(query);
-
-      return matchesFilter && matchesSearch;
+      return matchesFilter(project, selectedFilter) && matchesSearch;
     });
   }, [selectedFilter, searchQuery]);
 
+  const closeModal = useCallback(() => setSelectedModalProject(null), []);
+
+  const featured = filteredProjects.filter((p) => p.featured);
+  const others = filteredProjects.filter((p) => !p.featured);
+
+  const resetFilters = () => {
+    setSelectedFilter('All');
+    setSearchQuery('');
+  };
+
   return (
-    <section id="projects" className="py-24 border-b border-white/[0.08] relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase tracking-wider mb-2">
-              <Terminal className="w-3.5 h-3.5" />
-              <span>PRODUCTION SYSTEMS & ARCHITECTURAL CASE STUDIES</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Featured Engineering Projects
-            </h2>
-            <p className="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl">
-              In-depth technical breakdowns of production systems: microservices, financial webhooks, virtual coin wallets, scheduling state machines, and AI tool-calling pipelines.
-            </p>
-          </div>
-
-          <div className="text-xs font-mono text-slate-400">
-            SHOWING {filteredProjects.length} OF {projectsData.length} SYSTEMS
-          </div>
-        </div>
-
-        {/* Filter and Search Bar */}
-        <div className="p-3 sm:p-4 rounded-xl bg-[#090d16] border border-white/[0.08] mb-10 space-y-4">
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-            {/* Search Field */}
-            <div className="relative flex-1">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                placeholder="Search projects by tech (gRPC, NestJS, Razorpay, Redis, Docker)..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-black/50 border border-white/[0.1] rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 font-mono transition-colors"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-slate-400 hover:text-white"
-                >
-                  CLEAR
-                </button>
-              )}
-            </div>
-          </div>
-
-          {/* Interactive Filter Controls - Segmented tabs, zero-pill discipline */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+    <Section
+      id="projects"
+      index="01"
+      label="Selected work"
+      title={
+        <>
+          Case studies from <em>production</em>, not side projects.
+        </>
+      }
+      intro="Each one is a system I shipped with a real constraint behind it: webhook retries that must not double-credit, ride dispatch under concurrent bookings, AI that must not invent hotel rates."
+    >
+      {/* Filters */}
+      <div className="flex flex-col gap-5 border-b border-line pb-5 lg:flex-row lg:items-end lg:justify-between">
+        <div className="-mx-5 overflow-x-auto px-5 sm:mx-0 sm:px-0" role="group" aria-label="Filter projects by domain">
+          <div className="flex gap-2 whitespace-nowrap text-sm sm:flex-wrap">
             {filters.map((filter) => {
+              const count = projectsData.filter((p) => matchesFilter(p, filter)).length;
+              if (count === 0) return null;
               const isSelected = selectedFilter === filter;
+              const Icon = domainIcon[filter];
               return (
                 <button
                   key={filter}
+                  type="button"
                   onClick={() => setSelectedFilter(filter)}
-                  className={`px-3 py-1.5 text-xs font-mono rounded-md whitespace-nowrap transition-all duration-150 border ${
+                  aria-pressed={isSelected}
+                  className={`group inline-flex items-center gap-1.5 rounded-full border py-1 pr-3 pl-1 transition-all duration-300 ${
                     isSelected
-                      ? 'bg-cyan-500/15 text-cyan-300 border-cyan-500/40 font-semibold'
-                      : 'bg-white/[0.02] text-slate-400 border-white/[0.06] hover:bg-white/[0.05] hover:text-slate-200'
+                      ? 'border-accent/60 bg-tint text-ink shadow-[0_6px_20px_-12px_var(--color-accent)]'
+                      : 'border-line bg-raised/60 text-muted hover:border-line-strong hover:text-ink'
                   }`}
-                  data-cursor="FILTER"
                 >
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-bg">
+                    {Icon ? (
+                      <Icon className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-px" />
+                    ) : (
+                      <LayoutGrid className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+                    )}
+                  </span>
                   {filter}
+                  <span className={`font-mono text-[10px] ${isSelected ? 'text-accent' : 'text-faint'}`}>{count}</span>
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Projects List */}
-        {filteredProjects.length > 0 ? (
-          <div className="space-y-10">
-            {filteredProjects.map((project, index) => (
-              <FeaturedProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-                onOpenModal={setSelectedModalProject}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="p-12 text-center rounded-xl bg-white/[0.02] border border-white/[0.08]">
-            <p className="text-sm font-mono text-slate-400">
-              No engineering projects matched filter "{selectedFilter}" or query "{searchQuery}".
-            </p>
-            <button
-              onClick={() => {
-                setSelectedFilter('All');
-                setSearchQuery('');
-              }}
-              className="mt-4 px-4 py-1.5 text-xs font-mono rounded bg-white/[0.06] text-slate-200 hover:bg-white/[0.1] border border-white/[0.1]"
-            >
-              Reset Filters
-            </button>
-          </div>
-        )}
-
-        {/* Project Case Study Modal */}
-        <ProjectModal
-          project={selectedModalProject}
-          onClose={() => setSelectedModalProject(null)}
-        />
+        <label className="flex items-center gap-3 border-b border-line-strong pb-1.5 transition-colors focus-within:border-accent lg:w-72">
+          <span className="font-mono text-xs text-faint">find</span>
+          <input
+            type="search"
+            placeholder="gRPC, Razorpay, Redis…"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-transparent text-sm text-ink placeholder:text-faint focus:outline-none"
+          />
+        </label>
       </div>
-    </section>
+
+      <p className="mt-4 font-mono text-xs text-faint" aria-live="polite">
+        {filteredProjects.length} of {projectsData.length} projects
+      </p>
+
+      {filteredProjects.length === 0 ? (
+        <div className="py-16">
+          <p className="text-body">
+            Nothing matches{searchQuery && <> “{searchQuery}”</>}
+            {selectedFilter !== 'All' && <> in {selectedFilter}</>}.
+          </p>
+          <button type="button" onClick={resetFilters} className="link mt-3 text-sm">
+            Clear filters
+          </button>
+        </div>
+      ) : (
+        <>
+          {featured.length > 0 && (
+            <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
+              {featured.map((project, index) => (
+                <FeaturedProjectCard
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  wide={index === 0 || (featured.length % 2 === 0 && index === featured.length - 1)}
+                  onOpenModal={setSelectedModalProject}
+                />
+              ))}
+            </div>
+          )}
+
+          {others.length > 0 && (
+            <div className="mt-16 grid grid-cols-1 gap-y-6 lg:grid-cols-12 lg:gap-x-8">
+              <h3 className="eyebrow lg:col-span-3 lg:pt-5">Also built</h3>
+              <ul className="border-t border-line lg:col-span-9">
+                {others.map((project) => (
+                  <li key={project.id} className="border-b border-line">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedModalProject(project)}
+                      className="group grid w-full grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 py-5 text-left sm:grid-cols-[10rem_1fr_auto]"
+                    >
+                      <span className="font-serif text-2xl text-ink">{project.title}</span>
+                      <span className="order-3 col-span-2 text-sm text-muted sm:order-none sm:col-span-1">
+                        {project.subtitle}
+                      </span>
+                      <span className="flex items-center gap-3 font-mono text-xs text-faint">
+                        {project.year}
+                        <span className="text-accent transition-transform group-hover:translate-x-1" aria-hidden="true">
+                          →
+                        </span>
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </>
+      )}
+
+      <ProjectModal project={selectedModalProject} onClose={closeModal} />
+    </Section>
   );
 };
