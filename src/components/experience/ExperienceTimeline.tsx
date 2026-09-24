@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { careerTimeline, progressionSteps } from '../../data/experience';
+import { profileData } from '../../data/profile';
 import { Briefcase, Calendar, MapPin, ArrowRight, CheckCircle2, ChevronRight, TrendingUp } from 'lucide-react';
 
 export const ExperienceTimeline: React.FC = () => {
@@ -18,7 +19,7 @@ export const ExperienceTimeline: React.FC = () => {
             Engineering Timeline & Progression
           </h2>
           <p className="text-slate-300 text-sm sm:text-base mt-2">
-            Over 3.6+ years of sustained engineering growth at Devstree IT Services Pvt. Ltd., systematically expanding from client-side interfaces to distributed microservices and AI agent orchestration.
+            Over {profileData.experienceYears} years of sustained engineering growth at Devstree IT Services Pvt. Ltd., systematically expanding from client-side interfaces to distributed microservices and AI agent orchestration.
           </p>
         </div>
 

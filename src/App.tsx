@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { CustomCursor } from './components/layout/CustomCursor';
 import { Footer } from './components/layout/Footer';
@@ -12,24 +12,26 @@ import { TechUniverse } from './components/tech/TechUniverse';
 import { ExperienceTimeline } from './components/experience/ExperienceTimeline';
 import { EngineeringImpact } from './components/impact/EngineeringImpact';
 import { ResumeSection } from './components/resume/ResumeSection';
-import { ResumeModal } from './components/resume/ResumeModal';
 import { ContactSection } from './components/contact/ContactSection';
+import { profileData } from './data/profile';
+
+const openResume = () => {
+  window.open(profileData.resumeUrl, '_blank', 'noopener,noreferrer');
+};
 
 export default function App() {
-  const [isResumeOpen, setIsResumeOpen] = useState<boolean>(false);
-
   return (
     <div className="min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-300 font-sans antialiased relative">
       {/* Desktop Contextual Custom Cursor */}
       <CustomCursor />
 
       {/* Floating 3-Zone Navigation */}
-      <Navbar onOpenResume={() => setIsResumeOpen(true)} />
+      <Navbar onOpenResume={openResume} />
 
       {/* Main Content Sections */}
       <main>
         {/* 1. Interactive Engineering Hero + System Console */}
-        <Hero onOpenResume={() => setIsResumeOpen(true)} />
+        <Hero onOpenResume={openResume} />
 
         {/* 2. Trust / Metrics Strip */}
         <MetricsStrip />
@@ -56,17 +58,14 @@ export default function App() {
         <EngineeringImpact />
 
         {/* 10. Resume Preview Card */}
-        <ResumeSection onOpenResume={() => setIsResumeOpen(true)} />
+        <ResumeSection onOpenResume={openResume} />
 
         {/* 11. Technical Contact Section ("Have a difficult engineering problem?") */}
         <ContactSection />
       </main>
 
       {/* Minimal System Footer */}
-      <Footer onOpenResume={() => setIsResumeOpen(true)} />
-
-      {/* Interactive Modal Resume Document */}
-      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+      <Footer onOpenResume={openResume} />
     </div>
   );
 }

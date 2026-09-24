@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, Eye, Download, Printer, CheckCircle2, ArrowRight } from 'lucide-react';
+import { FileText, Eye, Download, Printer, CheckCircle2, ArrowRight, ExternalLink } from 'lucide-react';
 import { profileData } from '../../data/profile';
 
 interface ResumeSectionProps {
@@ -8,7 +8,7 @@ interface ResumeSectionProps {
 
 export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResume }) => {
   const handleDownload = () => {
-    onOpenResume();
+    window.open(profileData.resumeDownloadUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -31,7 +31,7 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResume }) =>
               </h2>
 
               <p className="text-sm sm:text-base text-slate-300 max-w-xl leading-relaxed">
-                A verified breakdown of 3.6+ years of full-stack engineering, microservices architecture, database tuning, and real-world AI integrations. Ready for technical review.
+                A verified breakdown of {profileData.experienceYears} years of full-stack engineering, microservices architecture, database tuning, and real-world AI integrations. Ready for technical review.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-3">
@@ -50,22 +50,24 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResume }) =>
                   data-cursor="DOWNLOAD"
                 >
                   <Download className="w-4 h-4 text-cyan-400" />
-                  <span>Download / Print Resume</span>
+                  <span>Download Resume</span>
                 </button>
               </div>
             </div>
 
             {/* Right: Clean Resume Preview Card */}
             <div className="lg:col-span-5">
-              <div
+              <button
+                type="button"
                 onClick={onOpenResume}
-                className="p-5 rounded-xl bg-black/60 border border-white/[0.12] hover:border-cyan-500/40 transition-all cursor-pointer group shadow-2xl"
+                aria-label="Open resume in a new tab"
+                className="w-full text-left p-5 rounded-xl bg-black/60 border border-white/[0.12] hover:border-cyan-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60 transition-all cursor-pointer group shadow-2xl"
                 data-cursor="EXPAND"
               >
                 <div className="flex items-center justify-between pb-3 border-b border-white/[0.08] text-xs font-mono">
                   <span className="text-white font-semibold">Pavandeep Kumar</span>
                   <span className="text-cyan-400 text-[11px] group-hover:underline">
-                    Click to inspect →
+                    Open resume ↗
                   </span>
                 </div>
 
@@ -76,11 +78,12 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResume }) =>
                   </div>
                   <div className="text-slate-400">
                     <span className="text-slate-500">EXPERIENCE: </span>
-                    <span className="text-slate-200">3.6+ Years (Devstree IT Services)</span>
+                    <span className="text-slate-200">{profileData.experienceYears} Years (Devstree IT Services)</span>
                   </div>
                   <div className="text-slate-400">
                     <span className="text-slate-500">LOCATION: </span>
-                    <span className="text-slate-200">Ahmedabad, Gujarat, India</span>
+                    <span className="text-slate-200">{profileData.location}</span>
+                    <span className="text-emerald-400"> · {profileData.relocation}</span>
                   </div>
                   <div className="text-slate-400 truncate">
                     <span className="text-slate-500">CORE: </span>
@@ -92,9 +95,11 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onOpenResume }) =>
                   <span className="flex items-center gap-1 text-emerald-400">
                     <CheckCircle2 className="w-3 h-3" /> Updated 2026
                   </span>
-                  <span>Formatted A4 Layout</span>
+                  <span className="flex items-center gap-1">
+                    PDF · Google Drive <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                  </span>
                 </div>
-              </div>
+              </button>
             </div>
           </div>
         </div>

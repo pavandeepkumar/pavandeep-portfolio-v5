@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, FileText, Sparkles, ShieldCheck } from 'lucide-react';
+import { ArrowRight, FileText, Sparkles, ShieldCheck, MapPin, Plane, ExternalLink } from 'lucide-react';
 import { profileData } from '../../data/profile';
 import { SystemConsole } from './SystemConsole';
 
@@ -31,7 +31,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             <div className="flex items-center gap-2.5 text-xs font-mono tracking-wider text-slate-400">
               <span className="text-cyan-400 font-semibold">FULL STACK ENGINEER</span>
               <span className="text-slate-600">·</span>
-              <span>3.6+ YEARS EXPERIENCE</span>
+              <span>{profileData.experienceYears} YEARS EXPERIENCE</span>
             </div>
 
             {/* Main Headline */}
@@ -49,16 +49,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </p>
 
             {/* Real Status Indicator */}
-            <div className="flex items-center gap-3 pt-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/[0.04] border border-white/[0.08] text-xs font-mono">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                <span className="text-slate-200 font-medium tracking-wide">
+            <div className="space-y-2.5 pt-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-emerald-500/[0.06] border border-emerald-500/20 text-xs font-mono">
+                <span className="relative flex w-2 h-2" aria-hidden="true">
+                  <span className="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-60 animate-ping" />
+                  <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                </span>
+                <span className="text-emerald-200 font-medium tracking-wide">
                   {profileData.status}
                 </span>
               </div>
-              <span className="text-xs text-slate-400 font-mono hidden sm:inline">
-                {profileData.location}
-              </span>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-slate-400">
+                <span className="inline-flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" />
+                  {profileData.location}
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-slate-200">
+                  <Plane className="w-3.5 h-3.5 text-cyan-400" aria-hidden="true" />
+                  {profileData.relocation}
+                </span>
+                <span className="text-slate-500">{profileData.workModes.join(' · ')}</span>
+              </div>
             </div>
 
             {/* Action Buttons */}
@@ -79,6 +90,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               >
                 <FileText className="w-4 h-4 text-cyan-400" />
                 <span>View Resume</span>
+                <ExternalLink className="w-3.5 h-3.5 text-slate-500" aria-hidden="true" />
+                <span className="sr-only">(opens in new tab)</span>
               </button>
             </div>
 

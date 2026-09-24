@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Terminal, CheckCircle2, Activity, Cpu, Database, Server, Sparkles, Cloud } from 'lucide-react';
+import { profileData } from '../../data/profile';
 
 interface ServiceDetail {
   id: string;
@@ -135,7 +136,7 @@ export const SystemConsole: React.FC = () => {
         </div>
         <div className="bg-[#090d16] p-2.5">
           <div className="text-slate-400 uppercase text-[10px]">EXPERIENCE</div>
-          <div className="text-slate-200 font-semibold mt-0.5">3.6+ YEARS</div>
+          <div className="text-slate-200 font-semibold mt-0.5">{profileData.experienceYears} YEARS</div>
         </div>
       </div>
 

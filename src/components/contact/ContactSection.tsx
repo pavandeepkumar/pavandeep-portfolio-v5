@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Linkedin, Github, MapPin, ArrowRight, Copy, Check, Terminal, Send, MessageSquare } from 'lucide-react';
+import { Mail, Linkedin, Github, MapPin, ArrowRight, Copy, Check, Terminal, Send, MessageSquare, Plane } from 'lucide-react';
 import { profileData } from '../../data/profile';
 
 export const ContactSection: React.FC = () => {
@@ -125,12 +125,25 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Location marker */}
-            <div className="p-4 rounded-xl bg-black/40 border border-white/[0.06] flex items-center justify-between text-xs font-mono text-slate-400">
-              <div className="flex items-center gap-2 text-slate-300">
-                <MapPin className="w-4 h-4 text-cyan-400" />
-                <span>{profileData.contacts.locationText}</span>
+            <div className="p-4 rounded-xl bg-black/40 border border-white/[0.06] space-y-3 text-xs font-mono text-slate-400">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex items-center gap-2 text-slate-300">
+                  <MapPin className="w-4 h-4 text-cyan-400" aria-hidden="true" />
+                  <span>{profileData.contacts.locationText}</span>
+                </div>
+                <span className="text-slate-500">UTC+5:30 (IST)</span>
               </div>
-              <span className="text-slate-500">UTC+5:30 (IST)</span>
+              <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-white/[0.06]">
+                <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-300">
+                  <Plane className="w-3.5 h-3.5" aria-hidden="true" />
+                  {profileData.relocation}
+                </span>
+                {profileData.workModes.map((mode) => (
+                  <span key={mode} className="px-2 py-1 rounded bg-white/[0.04] border border-white/[0.08] text-slate-300">
+                    {mode}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 

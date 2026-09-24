@@ -58,12 +58,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               </div>
               <div className="text-xs font-mono text-slate-400 space-y-1 sm:text-right">
                 <div>{profileData.contacts.email}</div>
-                <div>{profileData.contacts.locationText}</div>
+                <div>{profileData.contacts.locationText} · {profileData.relocation}</div>
                 <div>{profileData.contacts.linkedinHandle}</div>
               </div>
             </div>
             <p className="text-xs sm:text-sm text-slate-300 mt-4 leading-relaxed font-sans">
-              Senior Full Stack Engineer with 3.6+ years of experience engineering high-throughput backend systems, distributed microservices using NestJS and gRPC, scalable relational schemas in PostgreSQL, and practical generative AI tool-calling pipelines.
+              Senior Full Stack Engineer with {profileData.experienceYears} years of experience engineering high-throughput backend systems, distributed microservices using NestJS and gRPC, scalable relational schemas in PostgreSQL, and practical generative AI tool-calling pipelines.
             </p>
           </div>
 
