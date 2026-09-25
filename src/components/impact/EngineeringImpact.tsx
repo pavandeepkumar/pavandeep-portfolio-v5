@@ -74,7 +74,7 @@ const headline = [
 const HeadlineStrip: React.FC = () => {
   const [ref, seen] = useSeen<HTMLDListElement>(0.4);
   return (
-    <dl ref={ref} className="grid grid-cols-2 overflow-hidden rounded-lg border border-line bg-raised lg:grid-cols-4">
+    <dl ref={ref} className="grid grid-cols-2 overflow-hidden rounded-lg border border-line bg-raised card-shadow lg:grid-cols-4">
       {headline.map((h, i) => (
         <div
           key={h.label}
@@ -209,7 +209,7 @@ const ImpactCard: React.FC<{ item: (typeof engineeringImpactData)[number]; index
   return (
     <li
       ref={ref}
-      className="group flex flex-col rounded-lg border border-line bg-raised p-6 transition-all duration-500 hover:-translate-y-0.5 hover:border-line-strong"
+      className="group flex flex-col rounded-lg border border-line bg-raised card-shadow card-shadow-hover p-6 transition-all duration-500 hover:-translate-y-0.5 hover:border-line-strong"
       style={{
         opacity: seen ? 1 : 0,
         transform: seen ? undefined : 'translateY(16px)',

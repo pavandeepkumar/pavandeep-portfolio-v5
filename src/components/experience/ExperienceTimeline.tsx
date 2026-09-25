@@ -82,7 +82,7 @@ export const ExperienceTimeline: React.FC = () => {
       {/* Numbers first */}
       <dl className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {facts.map((f) => (
-          <div key={f.label} className="rounded-lg border border-line bg-raised p-5">
+          <div key={f.label} className="rounded-lg border border-line bg-raised card-shadow p-5">
             <dt className="sr-only">{f.label}</dt>
             <dd className="font-serif text-4xl leading-none text-accent">{f.value}</dd>
             <dd className="mt-2 text-[13px] text-muted">{f.label}</dd>
@@ -92,7 +92,7 @@ export const ExperienceTimeline: React.FC = () => {
 
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-12">
         {/* Staircase: one column per role, blocks = layers owned */}
-        <div ref={chartRef} className="rounded-xl border border-line bg-raised p-4 sm:p-6 lg:col-span-7">
+        <div ref={chartRef} className="rounded-xl border border-line bg-raised card-shadow p-4 sm:p-6 lg:col-span-7">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <p className="eyebrow">What each role owned</p>
             <div className="flex flex-wrap gap-x-3 gap-y-1">
@@ -178,7 +178,7 @@ export const ExperienceTimeline: React.FC = () => {
         </div>
 
         {/* Selected role */}
-        <div role="tabpanel" className="relative overflow-hidden rounded-xl border border-line bg-raised p-6 lg:col-span-5">
+        <div role="tabpanel" className="relative overflow-hidden rounded-xl border border-line bg-raised card-shadow p-6 lg:col-span-5">
           <div key={m.period} className="anim-in">
             <div className="flex items-center gap-4">
               <SelectedIcon className="h-14 w-14 shrink-0" />

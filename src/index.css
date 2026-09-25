@@ -22,6 +22,12 @@
   --color-shadow: rgba(0, 0, 0, 0.85);
 }
 
+/* Card elevation: flat in dark (borders do the work), soft warm shadow in light. */
+:root {
+  --card-shadow: none;
+  --card-shadow-hover: none;
+}
+
 /* Light palette: high-contrast warm paper. Every text tone meets WCAG AA on bg. */
 :root[data-theme="light"] {
   --color-bg: #f7f5f0;
@@ -38,6 +44,14 @@
   --color-sky: #245f8f;
   --color-violet: #5b45a8;
   --color-shadow: rgba(40, 30, 20, 0.22);
+  --card-shadow: 0 1px 2px rgba(40, 30, 20, 0.05), 0 6px 16px -6px rgba(40, 30, 20, 0.12);
+  --card-shadow-hover: 0 2px 4px rgba(40, 30, 20, 0.06), 0 16px 32px -12px rgba(40, 30, 20, 0.22);
+}
+
+/* In light mode the shadow separates cards, so drop their borders (hover included).
+   Unlayered on purpose so it beats hover:border-* utilities; width stays to avoid layout shift. */
+:root[data-theme="light"] .card-shadow {
+  border-color: transparent;
 }
 
 @layer base {
@@ -106,6 +120,13 @@
       color-mix(in oklab, var(--color-line) 70%, transparent) 7px 8px
     );
     border-block: 1px solid var(--color-line);
+  }
+
+  .card-shadow {
+    box-shadow: var(--card-shadow);
+  }
+  .card-shadow-hover:hover {
+    box-shadow: var(--card-shadow-hover);
   }
 
   .eyebrow {

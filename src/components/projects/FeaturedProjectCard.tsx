@@ -33,7 +33,7 @@ export const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ projec
   return (
     <article
       id={`work-${project.id}`}
-      className={`group relative flex flex-col rounded-lg border border-line bg-raised p-5 transition-colors hover:border-line-strong sm:p-7 ${
+      className={`group relative flex flex-col rounded-lg border border-line bg-raised card-shadow card-shadow-hover p-5 transition-colors hover:border-line-strong sm:p-7 ${
         wide ? 'md:col-span-2' : ''
       }`}
     >

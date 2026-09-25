@@ -311,7 +311,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 return (
                   <li
                     key={note.n}
-                    className="group inline-flex items-center gap-2 rounded-full border border-line bg-raised/70 py-1 pr-3 pl-1 font-mono text-[11px] text-muted backdrop-blur-sm transition-colors hover:border-line-strong hover:text-ink"
+                    className="group inline-flex items-center gap-2 rounded-full border border-line bg-raised/70 card-shadow card-shadow-hover py-1 pr-3 pl-1 font-mono text-[11px] text-muted backdrop-blur-sm transition-colors hover:border-line-strong hover:text-ink"
                   >
                     <span className="flex h-7 w-7 items-center justify-center rounded-full bg-bg">
                       <Icon className="h-6 w-6 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:rotate-[-6deg]" />
@@ -344,7 +344,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
           {/* Career track */}
           <aside className="anim-in lg:col-span-4 lg:self-end" style={stagger(520)}>
-            <div className="rounded-xl border border-line bg-raised/90 p-5 backdrop-blur-sm transition-colors hover:border-line-strong">
+            <div className="rounded-xl border border-line bg-raised/90 card-shadow card-shadow-hover p-5 backdrop-blur-sm transition-colors hover:border-line-strong">
               <div className="flex items-end justify-between gap-3 border-b border-line pb-4">
                 <span className="relative h-12 w-12 shrink-0 self-center overflow-hidden rounded-xl border border-line-strong bg-bg">
                   <span className="absolute inset-0 translate-y-1 scale-[1.35]">
@@ -417,7 +417,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               <li
                 key={`${label}-${i}`}
                 aria-hidden={i >= stackStrip.length}
-                className="group flex shrink-0 items-center gap-2.5 rounded-xl border border-line bg-raised/80 py-1.5 pr-4 pl-1.5 transition-colors hover:border-accent/50"
+                className="group flex shrink-0 items-center gap-2.5 rounded-xl border border-line bg-raised/80 card-shadow card-shadow-hover py-1.5 pr-4 pl-1.5 transition-colors hover:border-accent/50"
               >
                 <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-bg">
                   <Icon className="h-7 w-7 transition-transform duration-300 group-hover:-translate-y-0.5" />

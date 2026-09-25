@@ -118,7 +118,7 @@ export const AiPipeline: React.FC = () => {
       </div>
 
       {/* What happens at the active step */}
-      <div className="mt-4 flex flex-col gap-3 rounded-xl border border-line bg-raised p-4 sm:flex-row sm:items-center sm:gap-5 sm:p-5">
+      <div className="mt-4 flex flex-col gap-3 rounded-xl border border-line bg-raised card-shadow p-4 sm:flex-row sm:items-center sm:gap-5 sm:p-5">
         <current.Icon className="hidden h-12 w-12 shrink-0 sm:block" />
         <div key={active} className="anim-in min-w-0 flex-1">
           <p className="font-mono text-[10.5px] uppercase tracking-wider text-faint">

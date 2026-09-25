@@ -55,7 +55,7 @@ export const AboutSection: React.FC = () => {
     >
       <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {pillars.map(({ icon: Icon, area, stack, text }, i) => (
-          <li key={area} className="group flex flex-col rounded-lg border border-line bg-raised p-4 transition-colors hover:border-line-strong">
+          <li key={area} className="group flex flex-col rounded-lg border border-line bg-raised card-shadow card-shadow-hover p-4 transition-colors hover:border-line-strong">
             <PillarVisual area={area} />
             <div className="mt-4 flex items-center justify-between">
               <Icon className="h-10 w-10 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:rotate-[-4deg]" />

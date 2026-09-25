@@ -187,7 +187,7 @@ export const ArchitectureFlow: React.FC = () => {
         </div>
 
         {/* Detail */}
-        <div role="tabpanel" className="relative self-start overflow-hidden rounded-xl border border-line bg-raised p-6 sm:p-7">
+        <div role="tabpanel" className="relative self-start overflow-hidden rounded-xl border border-line bg-raised card-shadow p-6 sm:p-7">
           <span
             className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full opacity-20 blur-3xl transition-colors duration-500"
             style={{ background: active.tone }}

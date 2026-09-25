@@ -53,7 +53,7 @@ export const AiEngineeringSection: React.FC = () => {
         <div className="grid grid-cols-1 gap-y-12 md:col-span-12 lg:grid-cols-12 lg:gap-x-8">
           <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1 lg:content-start">
             {practices.map(({ icon: Icon, title, text }) => (
-              <li key={title} className="group flex gap-4 rounded-lg border border-line bg-raised p-4 transition-colors hover:border-line-strong">
+              <li key={title} className="group flex gap-4 rounded-lg border border-line bg-raised card-shadow card-shadow-hover p-4 transition-colors hover:border-line-strong">
                 <Icon className="h-11 w-11 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:rotate-[-4deg]" />
                 <div>
                   <h3 className="text-[15px] text-ink">{title}</h3>

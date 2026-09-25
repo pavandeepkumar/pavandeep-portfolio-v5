@@ -126,7 +126,7 @@ export const ContactSection: React.FC = () => {
             {availability.map(({ label, value, Icon }) => (
               <div
                 key={label}
-                className="group flex items-center gap-2.5 rounded-xl border border-line bg-raised p-2.5 transition-colors hover:border-line-strong"
+                className="group flex items-center gap-2.5 rounded-xl border border-line bg-raised card-shadow card-shadow-hover p-2.5 transition-colors hover:border-line-strong"
               >
                 <Icon className="h-8 w-8 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5" />
                 <div className="min-w-0">
@@ -143,7 +143,7 @@ export const ContactSection: React.FC = () => {
           onSubmit={handleComposeMail}
           onMouseEnter={() => setComposerHover(true)}
           onMouseLeave={() => setComposerHover(false)}
-          className="relative rounded-2xl border border-line bg-raised p-5 sm:p-6 lg:col-span-7"
+          className="relative rounded-2xl border border-line bg-raised card-shadow p-5 sm:p-6 lg:col-span-7"
         >
           <div className="flex items-start justify-between gap-4">
             <fieldset className="min-w-0 flex-1">

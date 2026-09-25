@@ -184,7 +184,7 @@ export const TracePanel: React.FC = () => {
 
   return (
     <div
-      className="overflow-hidden rounded-xl border border-line bg-raised transition-colors hover:border-line-strong"
+      className="overflow-hidden rounded-xl border border-line bg-raised card-shadow card-shadow-hover transition-colors hover:border-line-strong"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >

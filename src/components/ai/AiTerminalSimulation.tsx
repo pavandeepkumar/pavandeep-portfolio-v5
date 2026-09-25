@@ -110,7 +110,7 @@ export const AiTerminalSimulation: React.FC = () => {
       ref={ref}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="overflow-hidden rounded-xl border border-line bg-raised"
+      className="overflow-hidden rounded-xl border border-line bg-raised card-shadow"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line px-5 py-3">
         <p className="font-mono text-[11px] text-muted">replay · how the request is routed</p>

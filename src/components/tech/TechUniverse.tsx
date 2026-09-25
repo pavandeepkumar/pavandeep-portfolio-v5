@@ -266,7 +266,7 @@ export const TechUniverse: React.FC = () => {
           </div>
 
           <div
-            className="relative mt-8 flex min-h-[200px] w-full max-w-[300px] flex-col justify-center rounded-lg border border-line bg-raised p-4 text-center"
+            className="relative mt-8 flex min-h-[200px] w-full max-w-[300px] flex-col justify-center rounded-lg border border-line bg-raised card-shadow p-4 text-center"
             aria-live="polite"
           >
             <span
