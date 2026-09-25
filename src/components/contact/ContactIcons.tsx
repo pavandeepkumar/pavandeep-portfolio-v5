@@ -88,7 +88,7 @@ export const ServicesIcon: React.FC<IconProps> = ({ className }) => {
       <polygon points={hex(15, 16, 8)} fill="url(#svc-a)" />
       <polygon points={hex(33, 16, 8)} fill="url(#svc-b)" />
       <polygon points={hex(24, 31, 8)} fill="url(#svc-c)" />
-      <text x="24" y="33.5" textAnchor="middle" fontSize="6.5" fontFamily="JetBrains Mono, monospace" fill="#fff">
+      <text x="24" y="33.5" textAnchor="middle" fontSize="6.5" fontFamily="Roboto, sans-serif" fill="#fff">
         {'{}'}
       </text>
     </Frame>
@@ -119,7 +119,7 @@ export const AiChatIcon: React.FC<IconProps> = ({ className }) => (
       <Grad id="ai-b" from="#c9bcf0" to="#8e79d4" />
     </defs>
     <path d="M6 10 a4 4 0 0 1 4 -4 h14 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 h-9 l-5 4 v-4 a4 4 0 0 1 -4 -4 z" fill="url(#ai-a)" />
-    <text x="17" y="18" textAnchor="middle" fontSize="10" fontWeight="700" fontFamily="Geist, sans-serif" fill="#fff">
+    <text x="17" y="18" textAnchor="middle" fontSize="10" fontWeight="700" fontFamily="Roboto, sans-serif" fill="#fff">
       ?
     </text>
     <path d="M18 24 a4 4 0 0 1 4 -4 h16 a4 4 0 0 1 4 4 v8 a4 4 0 0 1 -4 4 v4 l-5 -4 h-11 a4 4 0 0 1 -4 -4 z" fill="url(#ai-b)" />

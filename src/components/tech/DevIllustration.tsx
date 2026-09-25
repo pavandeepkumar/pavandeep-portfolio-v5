@@ -79,7 +79,7 @@ export const DevIllustration: React.FC<{ accent: string }> = ({ accent }) => {
     {/* Floating glyphs */}
     <g className="dev-float" style={{ '--d': '0s' } as React.CSSProperties}>
       <rect x="18" y="52" width="34" height="26" rx="7" fill="#1b1a18" stroke="#e9a15b" strokeOpacity="0.6" />
-      <text x="35" y="70" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontSize="13" fill="#e9a15b">
+      <text x="35" y="70" textAnchor="middle" fontFamily="Roboto, sans-serif" fontSize="13" fill="#e9a15b">
         {'{ }'}
       </text>
     </g>

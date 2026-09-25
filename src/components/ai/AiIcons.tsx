@@ -48,7 +48,7 @@ export const PromptIcon: React.FC<IconProps> = ({ className }) => (
       <Grad id="prm-b" from="#f6c48d" to="#d9853f" />
     </defs>
     <rect x="8" y="5" width="26" height="33" rx="3" fill="url(#prm-a)" />
-    <text x="12" y="14" fontSize="6" fontFamily="JetBrains Mono, monospace" fill="#b86a2c">
+    <text x="12" y="14" fontSize="6" fontFamily="Roboto, sans-serif" fill="#b86a2c">
       sys:
     </text>
     {[18, 23, 28].map((y, i) => (
@@ -104,7 +104,7 @@ export const ToolIcon: React.FC<IconProps> = ({ className }) => (
       <Grad id="tol-b" from="#b5dcae" to="#5f9a57" />
     </defs>
     <rect x="5" y="7" width="32" height="28" rx="5" fill="url(#tol-a)" />
-    <text x="21" y="27" textAnchor="middle" fontSize="15" fontWeight="700" fontFamily="JetBrains Mono, monospace" fill="#fff">
+    <text x="21" y="27" textAnchor="middle" fontSize="15" fontWeight="700" fontFamily="Roboto, sans-serif" fill="#fff">
       {'{}'}
     </text>
     <circle cx="37" cy="33" r="7" fill="url(#tol-b)" />

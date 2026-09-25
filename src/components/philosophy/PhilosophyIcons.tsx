@@ -23,7 +23,7 @@ export const ProblemIcon: React.FC<IconProps> = ({ className }) => (
     <circle cx="28" cy="28" r="9" fill="url(#prb-b)" />
     <circle cx="28" cy="28" r="6" fill="#dcecf8" />
     <path d="M25 26 a4 4 0 0 1 4 -2.5" fill="none" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" />
-    <text x="28" y="31" textAnchor="middle" fontSize="8" fontWeight="700" fontFamily="Geist, sans-serif" fill="#3b6f8f">
+    <text x="28" y="31" textAnchor="middle" fontSize="8" fontWeight="700" fontFamily="Roboto, sans-serif" fill="#3b6f8f">
       ?
     </text>
   </Frame>
