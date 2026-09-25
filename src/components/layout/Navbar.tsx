@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Container } from './Section';
+import { ThemeToggle } from './ThemeToggle';
 
 interface NavbarProps {
   onOpenResume: () => void;
@@ -84,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
         <div
           className={`relative overflow-hidden transition-all duration-500 ease-[cubic-bezier(.2,.7,.2,1)] ${
             floating
-              ? 'rounded-full border border-line-strong/70 bg-raised/75 shadow-[0_12px_40px_-12px_rgba(0,0,0,.8)] backdrop-blur-md'
+              ? 'rounded-full border border-line-strong/70 bg-raised/75 shadow-[0_12px_40px_-12px_var(--color-shadow)] backdrop-blur-md'
               : 'rounded-none border border-transparent'
           }`}
         >
@@ -112,7 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             >
               {pill && (
                 <span
-                  className="absolute top-1/2 h-8 -translate-y-1/2 rounded-full border border-line-strong bg-white/[0.06] transition-all duration-300 ease-[cubic-bezier(.2,.7,.2,1)]"
+                  className="absolute top-1/2 h-8 -translate-y-1/2 rounded-full border border-line-strong bg-ink/[0.06] transition-all duration-300 ease-[cubic-bezier(.2,.7,.2,1)]"
                   style={{ left: pill.left, width: pill.width }}
                   aria-hidden="true"
                 />
@@ -142,6 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             </nav>
 
             <div className="hidden items-center gap-2 lg:flex">
+              <ThemeToggle />
               <button
                 type="button"
                 onClick={onOpenResume}
@@ -156,23 +158,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
               </button>
             </div>
 
-            <button
-              type="button"
-              onClick={() => setMenuOpen((open) => !open)}
-              className="-mr-2 flex items-center gap-2 p-2 font-mono text-xs uppercase tracking-wider text-ink lg:hidden"
-              aria-expanded={menuOpen}
-              aria-controls="mobile-menu"
-            >
-              <span className="relative block h-3 w-4" aria-hidden="true">
-                <span
-                  className={`absolute left-0 h-px w-4 bg-current transition-all duration-300 ${menuOpen ? 'top-1.5 rotate-45' : 'top-0.5'}`}
-                />
-                <span
-                  className={`absolute left-0 h-px w-4 bg-current transition-all duration-300 ${menuOpen ? 'top-1.5 -rotate-45' : 'top-2.5'}`}
-                />
-              </span>
-              {menuOpen ? 'Close' : 'Menu'}
-            </button>
+            <div className="flex items-center gap-1 lg:hidden">
+              {/* Icon-only on phones to leave room for the name; labelled from sm up. */}
+              <ThemeToggle className="px-2.5 [&>span]:hidden sm:px-3.5 sm:[&>span]:inline" />
+              <button
+                type="button"
+                onClick={() => setMenuOpen((open) => !open)}
+                className="-mr-2 flex items-center gap-2 p-2 font-mono text-xs uppercase tracking-wider text-ink"
+                aria-expanded={menuOpen}
+                aria-controls="mobile-menu"
+              >
+                <span className="relative block h-3 w-4" aria-hidden="true">
+                  <span
+                    className={`absolute left-0 h-px w-4 bg-current transition-all duration-300 ${menuOpen ? 'top-1.5 rotate-45' : 'top-0.5'}`}
+                  />
+                  <span
+                    className={`absolute left-0 h-px w-4 bg-current transition-all duration-300 ${menuOpen ? 'top-1.5 -rotate-45' : 'top-2.5'}`}
+                  />
+                </span>
+                {menuOpen ? 'Close' : 'Menu'}
+              </button>
+            </div>
           </Container>
 
           {/* Reading progress along the bottom edge */}

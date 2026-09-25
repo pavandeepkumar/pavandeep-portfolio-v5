@@ -21,7 +21,7 @@ const PaperPreview: React.FC<{ onOpen: () => void }> = ({ onOpen }) => (
     {/* Back sheet */}
     <span className="absolute inset-0 translate-x-3 translate-y-2 rotate-6 rounded-lg border border-line-strong bg-[#2a2724] transition-transform duration-500 group-hover:translate-x-5 group-hover:rotate-[9deg]" />
     {/* Front sheet */}
-    <span className="absolute inset-0 -rotate-3 overflow-hidden rounded-lg bg-[#efeae0] p-4 text-left shadow-[0_24px_50px_-20px_rgba(0,0,0,.9)] transition-transform duration-500 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:-translate-y-2 group-hover:rotate-0">
+    <span className="absolute inset-0 -rotate-3 overflow-hidden rounded-lg bg-[#efeae0] p-4 text-left shadow-[0_24px_50px_-20px_var(--color-shadow)] transition-transform duration-500 ease-[cubic-bezier(.2,.7,.2,1)] group-hover:-translate-y-2 group-hover:rotate-0">
       <span className="flex items-center gap-2">
         <span className="flex h-7 w-7 items-center justify-center rounded-md bg-accent font-serif text-[12px] text-bg">PK</span>
         <span>

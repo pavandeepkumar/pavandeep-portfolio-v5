@@ -149,7 +149,7 @@ export const TechUniverse: React.FC = () => {
         onMouseEnter={() => setHoverCat(cat)}
         onMouseLeave={() => setHoverCat(null)}
         className={`relative rounded-lg border bg-raised p-4 transition-all duration-300 ${
-          isActive ? 'border-line-strong shadow-[0_10px_30px_-15px_rgba(0,0,0,.9)]' : 'border-line'
+          isActive ? 'border-line-strong shadow-[0_10px_30px_-15px_var(--color-shadow)]' : 'border-line'
         } ${inView ? 'anim-in' : 'opacity-0'}`}
         style={{ '--d': `${200 + i * 110}ms` } as React.CSSProperties}
       >
@@ -178,7 +178,7 @@ export const TechUniverse: React.FC = () => {
                 onClick={() => pick(item)}
                 aria-pressed={isSelected}
                 className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[11.5px] transition-all duration-200 hover:-translate-y-px ${
-                  isSelected ? pillActive[tone] : `${pillIdle[tone]} hover:bg-white/[0.05]`
+                  isSelected ? pillActive[tone] : `${pillIdle[tone]} hover:bg-ink/[0.05]`
                 }`}
               >
                 <span className={`h-1.5 w-1.5 rounded-full border border-current ${isCore ? 'bg-current' : ''}`} aria-hidden="true" />

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <script>
@@ -34,6 +34,19 @@
     <meta name="keywords" content="Full Stack Engineer, Node.js Developer, NestJS Developer, React Developer, Backend Engineer, TypeScript Developer, Microservices Engineer, AI Engineer, PostgreSQL, AWS, Docker" />
     <meta name="author" content="Pavandeep Kumar" />
     <meta name="theme-color" content="#0d0d0c" />
+    <script>
+      // Apply saved or system theme before first paint to avoid a flash.
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          var theme = saved === 'light' || saved === 'dark'
+            ? saved
+            : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.dataset.theme = theme;
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', theme === 'light' ? '#f7f5f0' : '#0d0d0c');
+        } catch (_) {}
+      })();
+    </script>
 
     <!-- Open Graph / Social Cards -->
     <meta property="og:title" content="Pavandeep Kumar — Full Stack Engineer | Node.js | NestJS | React | AI" />
