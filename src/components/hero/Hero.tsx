@@ -352,7 +352,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                   </span>
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="font-mono text-[10px] uppercase tracking-wider text-muted">At Devstree since Apr 2023</p>
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-muted">At Devstree </p>
                   <p className="mt-1 text-[15px] text-ink">{profileData.role}</p>
                 </div>
                 <p className="shrink-0 whitespace-nowrap font-serif text-[42px] leading-none text-accent tabular-nums">

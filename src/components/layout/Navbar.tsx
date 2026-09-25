@@ -94,9 +94,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             }`}
           >
             <a href="#hero" className="group flex items-center gap-2.5 text-ink" onClick={() => setMenuOpen(false)}>
-              <span className="relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg border border-accent/40 bg-accent/10 font-serif text-[15px] text-accent transition-all duration-300 group-hover:rotate-[-8deg] group-hover:border-accent group-hover:bg-accent group-hover:text-bg">
-                PK
-              </span>
               <span className="whitespace-nowrap font-serif text-[21px] leading-none">Pavandeep Kumar</span>
               <span
                 className={`hidden whitespace-nowrap font-mono text-[11px] text-faint transition-all duration-300 xl:inline ${
