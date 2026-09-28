@@ -1,0 +1,211 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{fontawesome5}
+
+% ATS: make PDF text copyable and machine-readable
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+\geometry{
+    top=0.3in,
+    bottom=0.3in,
+    left=0.45in,
+    right=0.45in
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+
+%====================================================
+% SECTION FORMATTING
+%====================================================
+
+\titleformat{\section}
+    {\normalsize\bfseries\uppercase}
+    {}
+    {0em}
+    {}
+    [\titlerule]
+
+\titlespacing*{\section}
+    {0pt}
+    {6pt}
+    {3pt}
+
+%====================================================
+% BULLET FORMATTING
+%====================================================
+
+\setlist[itemize]{
+    leftmargin=14pt,
+    itemsep=1pt,
+    topsep=1pt,
+    parsep=0pt,
+    partopsep=0pt
+}
+
+%====================================================
+% CUSTOM COMMANDS
+%====================================================
+
+% End with \par (not \\) so no empty line appears before the bullet list
+\newcommand{\resumeSubheading}[4]{%
+    \textbf{#1} \hfill \textbf{#2}\\
+    \textit{#3} \hfill \textit{#4}\par
+}
+
+% {title}{tech stack}{dates}
+\newcommand{\projectHeading}[3]{%
+    \vspace{2pt}\textbf{#1} $|$ \textit{#2} \hfill \textbf{#3}\par
+}
+
+% Small label inside a job, e.g. "Roles & Responsibilities"
+\newcommand{\subLabel}[1]{%
+    \vspace{2pt}\textbf{\textit{#1}}\par
+}
+
+%====================================================
+% DOCUMENT
+%====================================================
+
+\begin{document}
+
+%====================================================
+% HEADER
+%====================================================
+
+\begin{center}
+    {\fontsize{22}{26}\selectfont\textbf{PAVANDEEP KUMAR}}\\[2pt]
+    \textbf{Full Stack Engineer | React $\cdot$ Next.js $\cdot$ Node.js $\cdot$ NestJS}\\[2pt]
+
+    \faMapMarker*\ Ahmedabad, Gujarat, India \quad
+    \faPhone*\ +91-9798949232 \quad
+    \faEnvelope\ \href{mailto:pavandeepkumarmlk@gmail.com}{pavandeepkumarmlk@gmail.com}\\[1pt]
+
+    \faGlobe\ \href{https://pavandeep.vercel.app/}{pavandeep.vercel.app} \quad
+    \faLinkedin\ \href{https://www.linkedin.com/in/pavandeepkumar/}{linkedin.com/in/pavandeepkumar} \quad
+    \faGithub\ \href{https://github.com/pavandeepkumar}{github.com/pavandeepkumar}
+\end{center}
+
+%====================================================
+% SUMMARY
+%====================================================
+
+\section{Professional Summary}
+
+Full Stack Engineer with 3.5+ years of experience building scalable SaaS, fintech, logistics, e-commerce, and AI-powered platforms using React.js, Next.js, Node.js, NestJS, PostgreSQL, Redis, microservices, gRPC, Docker, and AWS.
+
+%====================================================
+% SKILLS
+%====================================================
+
+\section{Technical Skills}
+
+\textbf{Languages:} JavaScript, TypeScript, SQL\\[1pt]
+\textbf{Frontend:} React.js, Next.js, Redux Toolkit, TanStack Query, Zustand, React Hook Form, Tailwind CSS, ShadCN UI\\[1pt]
+\textbf{Backend:} Node.js, NestJS, Express.js, REST APIs, Microservices, WebSockets, Socket.IO, gRPC\\[1pt]
+\textbf{Databases:} PostgreSQL, MSSQL, MySQL, MongoDB, Redis, TypeORM\\[1pt]
+\textbf{Cloud \& DevOps:} AWS (EC2, RDS, S3, ECS, ECR, Lambda), Docker, Docker Compose, Nginx, Linux, CI/CD, Vercel\\[1pt]
+\textbf{Security \& Integrations:} JWT, OAuth, RBAC, Razorpay, Stripe, PayPal, Webhooks, Firebase Cloud Messaging (FCM)\\[1pt]
+\textbf{AI Integration:} LLM Tool Calling, RAG, Prompt Design, AI Agents, Claude Code, MCP Servers\\[1pt]
+\textbf{Engineering:} System Design, API Design, Database Design, Performance Optimization, Git, GitHub, Postman, Swagger
+
+%====================================================
+% EXPERIENCE
+%====================================================
+
+\section{Professional Experience}
+
+\resumeSubheading
+    {Software Engineer}
+    {April 2023 -- Present}
+    {Devstree IT Services Pvt. Ltd.}
+    {Ahmedabad, Gujarat}
+{\small Promoted: React Intern (2023) $\rightarrow$ React Developer (2023--2025) $\rightarrow$ Full Stack Developer (2025) $\rightarrow$ Software Engineer (2026--Present)}\par
+
+\subLabel{Roles \& Responsibilities}
+\begin{itemize}
+    \item Design, develop, and maintain full stack applications with React.js/Next.js frontends and Node.js/NestJS backends on PostgreSQL/MSSQL, collaborating with mobile teams on API design and production-ready features.
+    \item Own hands-on deployment of all services using Docker, Nginx, AWS (EC2, ECS, RDS, S3), and CI/CD, and coordinate with the DevOps team to optimize build and release processes.
+    \item Integrate Razorpay, Stripe, PayPal, FCM, and third-party APIs with payment verification and webhook processing.
+    \item Mentor and train frontend and full stack developers on implementation, architecture, debugging, and problem-solving.
+\end{itemize}
+
+\subLabel{Achievements}
+\begin{itemize}
+    \item Delivered \textbf{15+ production applications} across fintech, SaaS, logistics, e-commerce, and AI domains.
+    \item Drove team-wide adoption of \textbf{Claude Code across 25+ engineers}, establishing AI-assisted development workflows that reduced repetitive engineering work and improved development efficiency.
+    \item Led and mentored a batch of \textbf{5 interns}, taking them from foundational Node.js concepts to independently contributing to production projects.
+    \item Improved performance by \textbf{35\%}, cut build size by \textbf{40\%}, and built a React Admin Panel Generator that reduced project setup time by \textbf{70\%}.
+\end{itemize}
+
+%====================================================
+% PROJECTS
+%====================================================
+
+\section{Client Projects at Devstree}
+
+\projectHeading
+    {MitGo -- Ride-Sharing Microservices Platform}
+    {NestJS, gRPC, Redis, PostgreSQL, Docker}
+    {March 2026 -- Present}
+\begin{itemize}
+    \item Designed 7 microservices (Auth, Ride, Booking, Location, Payment, Chat, Notifications) using gRPC and Protobuf.
+    \item Built ride matching with Redis GEO lookup, distributed locks, and real-time tracking via Socket.IO.
+\end{itemize}
+
+\projectHeading
+    {Netparts -- Automotive E-Commerce Platform}
+    {Next.js, NestJS, PostgreSQL, WebSockets}
+    {2023 -- 2024}
+\begin{itemize}
+    \item Designed a vehicle-compatibility catalog schema with composite indexes for fast faceted search on large SKU sets.
+    \item Built real-time buyer-merchant chat with WebSockets and optimistic-locking inventory to prevent overselling.
+\end{itemize}
+
+\projectHeading
+    {Travel Buddy -- AI Travel Discovery Platform}
+    {Next.js, NestJS, PostgreSQL, LLM APIs}
+    {2024 -- 2025}
+\begin{itemize}
+    \item Built an AI trip-planning assistant using LLM tool calling over schema-validated NestJS APIs to stop hallucinations.
+    \item Developed a streaming chat itinerary UI and a partner portal for property onboarding, pricing, and reservations.
+\end{itemize}
+
+\projectHeading
+    {\href{https://hungthuanport.com/}{DTEP -- Port Logistics Operations System}}
+    {React.js, NestJS, PostgreSQL, TypeORM}
+    {2023 -- 2024}
+\begin{itemize}
+    \item Built container tracking, yard allocation, equipment dispatch, and gate operation modules with RBAC.
+    \item Implemented an append-only audit log for every container move, recording operator, timestamp, and position.
+\end{itemize}
+
+%====================================================
+% CERTIFICATIONS
+%====================================================
+
+\section{Certifications}
+
+\textbf{AWS Certified Solutions Architect -- Associate} \hfill \textit{In Progress}
+
+%====================================================
+% EDUCATION
+%====================================================
+
+\section{Education}
+
+\textbf{Bachelor of Technology (B.Tech), Computer Engineering}
+\hfill \textbf{June 2022 -- June 2026}\\
+\textit{Silver Oak University, Ahmedabad, Gujarat -- completed while working full-time}
+\hfill \textit{CGPA: 9.17/10}
+
+\end{document}

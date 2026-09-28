@@ -24,7 +24,7 @@ const pillars = [
     icon: DatabaseIcon,
     area: 'Database',
     stack: ['PostgreSQL', 'Redis'],
-    text: 'Relational schemas, ACID transactions, composite indexing, and sub-millisecond caching.'
+    text: 'Relational schemas, ACID transactions, composite indexing, and Redis caching.'
   },
   {
     icon: CloudIcon,

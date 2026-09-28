@@ -11,7 +11,7 @@ const experienceYears = getExperienceYears();
 
 export const profileData = {
   name: 'Pavandeep Kumar',
-  role: 'Senior Full Stack Engineer',
+  role: 'Full Stack Engineer',
   alternativeRole: 'Full Stack Engineer · Backend & Distributed Systems · AI Engineering',
   experienceYears,
   resumeUrl: 'https://drive.google.com/file/d/1HFs8q56v4iO6ya9bCt45zmfgLf0ajRUH/view?usp=sharing',
@@ -33,7 +33,6 @@ export const profileData = {
     'NestJS',
     'PostgreSQL',
     'Redis',
-    'Kafka',
     'AWS',
     'Docker',
     'Microservices'

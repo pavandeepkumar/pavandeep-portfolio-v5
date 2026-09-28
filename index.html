@@ -2,37 +2,12 @@
 <html lang="en" class="scroll-smooth" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      (function() {
-        try {
-          var originalFetch = window.fetch ? window.fetch.bind(window) : null;
-          var customFetch = originalFetch;
-          var descriptor = {
-            get: function() {
-              return customFetch;
-            },
-            set: function(fn) {
-              customFetch = fn;
-            },
-            configurable: true,
-            enumerable: true
-          };
-          try {
-            Object.defineProperty(window, 'fetch', descriptor);
-          } catch (_) {}
-          try {
-            if (typeof Window !== 'undefined' && Window.prototype) {
-              Object.defineProperty(Window.prototype, 'fetch', descriptor);
-            }
-          } catch (_) {}
-        } catch (_) {}
-      })();
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pavandeep Kumar — Full Stack Engineer | Node.js | NestJS | React | AI</title>
     <meta name="description" content="Portfolio of Pavandeep Kumar, a Full Stack Engineer specializing in Node.js, NestJS, React, TypeScript, PostgreSQL, AWS, microservices, and AI-powered applications." />
     <meta name="keywords" content="Full Stack Engineer, Node.js Developer, NestJS Developer, React Developer, Backend Engineer, TypeScript Developer, Microservices Engineer, AI Engineer, PostgreSQL, AWS, Docker" />
     <meta name="author" content="Pavandeep Kumar" />
+    <link rel="canonical" href="https://pavandeep.vercel.app/" />
     <meta name="theme-color" content="#0d0d0c" />
     <script>
       // Apply saved or system theme before first paint to avoid a flash.
@@ -52,9 +27,15 @@
     <meta property="og:title" content="Pavandeep Kumar — Full Stack Engineer | Node.js | NestJS | React | AI" />
     <meta property="og:description" content="Portfolio of Pavandeep Kumar, a Full Stack Engineer specializing in Node.js, NestJS, React, TypeScript, PostgreSQL, AWS, microservices, and AI-powered applications." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pavandeep.vercel.app/" />
+    <meta property="og:image" content="https://pavandeep.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pavandeep Kumar, Full Stack Engineer" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Pavandeep Kumar — Full Stack Engineer" />
     <meta name="twitter:description" content="Building systems that scale beyond the screen. Node.js, NestJS, React, TypeScript, PostgreSQL, AWS, Microservices, and AI." />
+    <meta name="twitter:image" content="https://pavandeep.vercel.app/og-image.png" />
 
     <!-- Font: Roboto (text, display, meta) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -67,7 +48,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Pavandeep Kumar",
-      "jobTitle": "Senior Full Stack Engineer",
+      "jobTitle": "Software Engineer",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Ahmedabad",
@@ -81,7 +62,7 @@
       ],
       "knowsAbout": [
         "Node.js", "NestJS", "React", "TypeScript", "PostgreSQL",
-        "Redis", "Kafka", "AWS", "Docker", "Microservices", "RAG", "LLM Applications"
+        "Redis", "AWS", "Docker", "Microservices", "RAG", "LLM Applications"
       ]
     }
     </script>

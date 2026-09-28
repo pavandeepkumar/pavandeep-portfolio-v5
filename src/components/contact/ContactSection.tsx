@@ -23,7 +23,7 @@ const engineeringTopics = [
     Icon: ServersIcon
   },
   {
-    title: 'Senior Full Stack Engineering Role',
+    title: 'Full Stack Engineering Role',
     short: 'Full-stack role',
     blurb: 'An engineer who takes a feature from schema to screen and stays for the on-call.',
     Icon: RoleIcon

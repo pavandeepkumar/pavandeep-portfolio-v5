@@ -8,7 +8,7 @@ const practices = [
   {
     icon: RagIcon,
     title: 'RAG architectures & vector stores',
-    text: 'Grounding models in domain-specific documents and database catalogs, eliminating hallucinations through contextual chunk retrieval.'
+    text: 'Grounding models in domain-specific documents and database catalogs, so answers come from retrieved context rather than from model memory.'
   },
   {
     icon: ToolIcon,

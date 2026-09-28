@@ -12,7 +12,6 @@ export interface ImpactArea {
  * - `count`: a row of nodes, one per unit (small whole numbers)
  * - `ring`: a percentage gauge
  * - `compare`: before/after bars on the same scale
- * Figures marked VERIFY are estimates; replace them with measured values.
  */
 export type ImpactMetric =
   | { kind: 'count'; value: number; suffix?: string; label: string; unit: string }
@@ -48,14 +47,7 @@ export const engineeringImpactData: ImpactArea[] = [
       'Implemented optimistic concurrency locking to prevent inventory overselling during simultaneous checkout attempts.'
     ],
     systemEvidence: 'Applied in Netparts automotive catalog and Reelflix content streaming platform.',
-    // VERIFY: p95 catalog read latency before and after caching + indexing.
-    metric: {
-      kind: 'compare',
-      delta: '−85%',
-      label: 'p95 catalog read latency',
-      before: { value: 820, text: '820 ms' },
-      after: { value: 120, text: '120 ms' }
-    }
+    metric: { kind: 'count', value: 3, label: 'Redis cache roles: catalog, sessions, locks', unit: 'role' }
   },
   {
     category: 'Integrations',
@@ -87,7 +79,7 @@ export const engineeringImpactData: ImpactArea[] = [
     description: 'Bridged non-deterministic generative AI models with reliable, schema-validated relational databases and production booking APIs.',
     technicalDetails: [
       'Engineered typed tool-calling schemas enabling AI assistants to query live property inventory and attraction availability.',
-      'Eliminated hallucinations by decoupling conversational intent extraction from deterministic database transactions.',
+      'Kept the model to intent extraction; availability, prices and bookings always come from validated backend calls.',
       'Implemented streaming chat interfaces with real-time UI card synthesis for structured itinerary presentation.'
     ],
     systemEvidence: 'Integrated in Travel Buddy AI discovery platform.',
@@ -98,18 +90,11 @@ export const engineeringImpactData: ImpactArea[] = [
     title: 'Event-Driven Decoupling & Geospatial Telemetry',
     description: 'Built scalable location telemetry and asynchronous notification pipelines capable of handling high-frequency updates.',
     technicalDetails: [
-      'Leveraged Redis geospatial indexing for sub-millisecond driver radius searches and route distance calculations.',
+      'Used Redis geospatial indexes (GEOSEARCH) for nearby-driver radius lookups and distance calculations.',
       'Decoupled push notification delivery from the primary HTTP request-response cycle using background queues and FCM.',
       'Standardized logging formats across services to enable rapid tracing during inter-service anomalies.'
     ],
     systemEvidence: 'Engineered into MitGo and LiftClub mobility platforms.',
-    // VERIFY: nearby-driver lookup, SQL distance scan vs Redis GEOSEARCH.
-    metric: {
-      kind: 'compare',
-      delta: '<1 ms',
-      label: 'nearby-driver radius search',
-      before: { value: 180, text: '180 ms · SQL scan' },
-      after: { value: 1, text: '<1 ms · Redis GEO' }
-    }
+    metric: { kind: 'count', value: 2, label: 'mobility platforms on Redis GEO lookup', unit: 'platform' }
   }
 ];

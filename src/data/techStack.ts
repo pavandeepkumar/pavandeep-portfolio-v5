@@ -50,7 +50,7 @@ export const techUniverse: Record<string, TechItem[]> = {
       name: 'Node.js',
       category: 'Backend',
       experienceLevel: 'Primary Core',
-      usageDescription: 'Event loop mastery, non-blocking I/O, stream processing, worker threads, and scalable server backends.'
+      usageDescription: 'Non-blocking I/O, streams, worker threads, and server backends that stay responsive under load.'
     },
     {
       name: 'Express',
@@ -184,7 +184,7 @@ export const techUniverse: Record<string, TechItem[]> = {
       name: 'Event-Driven Systems',
       category: 'Architecture',
       experienceLevel: 'Advanced',
-      usageDescription: 'Decoupling services through message queues (Kafka / Redis Pub/Sub), asynchronous events, and webhook workers.'
+      usageDescription: 'Decoupling services through Redis Pub/Sub, background job queues, and webhook workers.'
     },
     {
       name: 'RBAC (Role-Based Access)',

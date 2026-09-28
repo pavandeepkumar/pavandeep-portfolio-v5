@@ -12,7 +12,7 @@ export const projectsData: Project[] = [
     technologies: ['NestJS', 'PostgreSQL', 'TypeORM', 'gRPC', 'Docker', 'Docker Compose', 'Nginx', 'Redis', 'FCM'],
     problem: 'Traditional monolithic ride-sharing backends encounter severe synchronization bottlenecks during peak commute hours, where ride dispatching, high-frequency GPS coordinate ingestion, driver telemetry, and payment reconciliation compete for the same database locks and CPU threads.',
     architecture: {
-      description: 'Decoupled poly-service architecture coordinated through a high-throughput API Gateway with internal gRPC channels for sub-millisecond inter-service RPC calls, and Redis for distributed location pub/sub.',
+      description: 'Decoupled poly-service architecture coordinated through a high-throughput API Gateway with internal gRPC channels for typed inter-service calls, and Redis for distributed location pub/sub.',
       flow: [
         'Client Ride Request',
         'API Gateway (Nginx Reverse Proxy)',
@@ -211,7 +211,7 @@ export const projectsData: Project[] = [
       'Built the partner portal enabling property managers to onboard listings, configure seasonal pricing, and view reservations.',
       'Engineered an interactive trip-planning frontend with streaming chat responses and visual itinerary card previews.'
     ],
-    engineeringChallenge: 'Eliminating AI hallucinations regarding hotel availability, room rates, and booking confirmations.',
+    engineeringChallenge: 'Stopping the AI from inventing hotel availability, room rates, and booking confirmations.',
     solution: 'Constrained the AI agent strictly to reasoning and intent extraction, mandating that all pricing, availability, and bookings are executed through deterministic, schema-validated NestJS backend APIs.',
     keyTakeaway: 'The most effective AI systems treat LLMs as reasoning controllers that interact with deterministic, reliable database backends.',
     metrics: [

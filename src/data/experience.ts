@@ -8,9 +8,9 @@ export const careerTimeline: CareerMilestone[] = [
     location: 'Ahmedabad, Gujarat, India',
     shift: 'Distributed Systems & AI Engineering',
     description:
-      'Spearheading distributed backend architectures, microservices decomposition with gRPC, and practical AI workflow integration with relational databases for international clients.',
+      'Building distributed backends, gRPC microservices, and AI workflows backed by relational databases for international clients.',
     responsibilities: [
-      'Architecting high-concurrency microservice backends with NestJS, PostgreSQL, Redis, and gRPC inter-service communication.',
+      'Building microservice backends with NestJS, PostgreSQL, Redis, and gRPC inter-service communication.',
       'Integrating generative AI reasoning pipelines with deterministic database tool-calling for travel discovery and business automation.',
       'Guiding database design, composite indexing strategies, and ACID transaction isolation for high-volume FinTech platforms.',
       'Containerizing multi-service stacks with Docker Compose and establishing CI/CD automation pipelines.'
@@ -89,7 +89,7 @@ export const progressionSteps = [
     stage: '04',
     name: 'Microservices & Systems',
     focus: 'gRPC, Docker, API Gateways, service boundaries, distributed state',
-    outcome: 'Architected independently deployable services communicating over high-speed RPC.'
+    outcome: 'Built independently deployable services communicating over gRPC.'
   },
   {
     stage: '05',
