@@ -44,7 +44,7 @@ export const AboutSection: React.FC = () => {
   return (
     <Section
       id="about"
-      index="02"
+      index="03"
       label="About"
       title={
         <>

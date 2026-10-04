@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { Hero } from './components/hero/Hero';
+import { QuickReview } from './components/quick/QuickReview';
 import { AboutSection } from './components/about/AboutSection';
 import { EngineeringPhilosophy } from './components/philosophy/EngineeringPhilosophy';
 import { ProjectExplorer } from './components/projects/ProjectExplorer';
@@ -31,6 +32,7 @@ export default function App() {
 
       <main>
         <Hero onOpenResume={openResume} />
+        <QuickReview onOpenResume={openResume} />
         <ProjectExplorer />
         <AboutSection />
         <EngineeringPhilosophy />

@@ -91,7 +91,7 @@ export const ContactSection: React.FC = () => {
   return (
     <Section
       id="contact"
-      index="08"
+      index="09"
       label="Contact"
       title={
         <>

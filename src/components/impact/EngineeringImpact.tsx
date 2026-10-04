@@ -253,7 +253,7 @@ export const EngineeringImpact: React.FC = () => {
   return (
     <Section
       id="impact"
-      index="07"
+      index="08"
       label="Impact"
       title="What the work changed."
       intro="The number that moved, and the system it moved in."

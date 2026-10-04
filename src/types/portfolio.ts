@@ -32,12 +32,15 @@ export interface CareerMilestone {
   skills: string[];
 }
 
+export type TechCategory = 'Frontend' | 'Backend' | 'Database' | 'Cloud' | 'DevOps' | 'Architecture' | 'AI';
+
+/** Daily = main tool, Strong = shipped often, Working = used in production but not daily. */
+export type TechLevel = 'Daily' | 'Strong' | 'Working';
+
 export interface TechItem {
   name: string;
-  category: 'Frontend' | 'Backend' | 'Database' | 'Cloud' | 'DevOps' | 'Architecture' | 'AI';
-  experienceLevel: string;
+  experienceLevel: TechLevel;
   usageDescription: string;
-  iconName?: string;
 }
 
 export interface PhilosophyPrinciple {

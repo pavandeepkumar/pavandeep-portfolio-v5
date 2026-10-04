@@ -1,234 +1,204 @@
-import { TechItem } from '../types/portfolio';
+import { TechCategory, TechItem } from '../types/portfolio';
 
-export const techUniverse: Record<string, TechItem[]> = {
+/**
+ * Category is the record key, so items never repeat it.
+ * Levels are recruiter-readable: Daily = main tool, Strong = shipped often,
+ * Working = used in production, not a daily driver.
+ * Descriptions say what the tool achieved, not how it works internally.
+ */
+export const techUniverse: Record<TechCategory, TechItem[]> = {
   Frontend: [
     {
       name: 'React',
-      category: 'Frontend',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Single-page applications, custom hooks, state synchronization, and accessible component design.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Builds the interfaces users work in every day, with reusable components and accessible layouts.'
     },
     {
       name: 'Next.js',
-      category: 'Frontend',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Server-side rendering, App Router architecture, optimized SEO, and hybrid static generation.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Delivers fast-loading, search-friendly web apps that render on the server.'
     },
     {
       name: 'TypeScript',
-      category: 'Frontend',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Strict type safety across frontend and backend interfaces, reducing runtime bugs and enabling confident refactoring.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Catches bugs before release and makes large codebases safe to change.'
     },
     {
       name: 'Tailwind CSS',
-      category: 'Frontend',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Utility-first styling, design systems, dark-mode styling, responsive viewports, and custom animation tokens.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Builds consistent design systems that work on mobile, desktop, and dark mode.'
     },
     {
       name: 'Vite',
-      category: 'Frontend',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Lightning-fast build tooling, modern ES modules bundling, and developer server optimization.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Keeps builds and local development fast, so features ship sooner.'
     },
     {
       name: 'Redux / Zustand',
-      category: 'Frontend',
-      experienceLevel: 'Proficient',
-      usageDescription: 'Predictable client-side global state management, middleware logging, and persistent cache stores.'
+      experienceLevel: 'Working',
+      usageDescription: 'Keeps app data predictable and in sync across complex screens.'
     }
   ],
   Backend: [
     {
       name: 'NestJS',
-      category: 'Backend',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Enterprise modular architecture, Dependency Injection, guards, interceptors, custom decorators, and microservices transports.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Main framework for enterprise services that stay organised as teams and features grow.'
     },
     {
       name: 'Node.js',
-      category: 'Backend',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Non-blocking I/O, streams, worker threads, and server backends that stay responsive under load.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Runs the server side of products, and stays responsive under heavy traffic.'
     },
     {
       name: 'Express',
-      category: 'Backend',
-      experienceLevel: 'Advanced',
-      usageDescription: 'High-speed lightweight REST APIs, custom middleware pipelines, and webhook ingestion gateways.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Builds lightweight services and integration endpoints quickly.'
     },
     {
       name: 'REST APIs',
-      category: 'Backend',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Resource-oriented design, standard HTTP status codes, structured error payloads, pagination, and OpenAPI documentation.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Designs documented APIs that mobile, web, and partner teams integrate against.'
     },
     {
       name: 'Socket.IO / WebSockets',
-      category: 'Backend',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Full-duplex real-time communication for live chat, telemetry updates, and instant booking status broadcasting.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Powers live features such as chat and instant status updates.'
     },
     {
       name: 'gRPC / Protobuf',
-      category: 'Backend',
-      experienceLevel: 'Advanced',
-      usageDescription: 'High-throughput binary RPC communication between distributed microservices with typed contract definitions.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Connects internal services with fast, strictly typed communication.'
     }
   ],
   Database: [
     {
       name: 'PostgreSQL',
-      category: 'Database',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Relational data modeling, ACID transactions, complex joins, composite B-tree indexing, and row-level locking for concurrency control.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Primary database for business-critical data that must stay accurate.'
     },
     {
       name: 'Redis',
-      category: 'Database',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'In-memory caching, distributed locks (Redlock), pub/sub messaging, session stores, and rate-limiting keys.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Speeds up slow pages with caching, and prevents double bookings or duplicate charges.'
     },
     {
       name: 'TypeORM / Prisma',
-      category: 'Database',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Schema migrations, declarative entity relationships, query builder optimizations, and transactional entity managers.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Manages database structure and safe schema upgrades as products change.'
     },
     {
       name: 'MongoDB',
-      category: 'Database',
-      experienceLevel: 'Proficient',
-      usageDescription: 'Document-based persistence, unstructured log storage, and flexible aggregation pipelines.'
+      experienceLevel: 'Working',
+      usageDescription: 'Stores flexible records such as activity logs and reporting data.'
     },
     {
       name: 'MySQL',
-      category: 'Database',
-      experienceLevel: 'Proficient',
-      usageDescription: 'Relational schema design, normalization, foreign key constraints, and storage engine management.'
+      experienceLevel: 'Working',
+      usageDescription: 'Designs and maintains relational databases on existing company systems.'
     }
   ],
   Cloud: [
     {
       name: 'AWS EC2',
-      category: 'Cloud',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Virtual instance provisioning, security group configuration, SSH management, and production server host operations.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Sets up and maintains the servers that run live products.'
     },
     {
       name: 'AWS S3',
-      category: 'Cloud',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Scalable object storage, presigned URLs for secure client uploads, bucket policies, and asset distribution.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Handles secure file and image storage with controlled access.'
     },
     {
       name: 'AWS RDS',
-      category: 'Cloud',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Managed PostgreSQL instances, automated backup snapshots, read replicas, and VPC connection pooling.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Runs managed databases with automatic backups and recovery.'
     },
     {
       name: 'AWS Lambda',
-      category: 'Cloud',
-      experienceLevel: 'Proficient',
-      usageDescription: 'Serverless event handlers for asynchronous background tasks, image resizing, and scheduled cron executions.'
+      experienceLevel: 'Working',
+      usageDescription: 'Runs scheduled and background jobs without paying for idle servers.'
     },
     {
       name: 'AWS ECS / ECR',
-      category: 'Cloud',
-      experienceLevel: 'Proficient',
-      usageDescription: 'Docker container image registry management and containerized task execution in managed clusters.'
+      experienceLevel: 'Working',
+      usageDescription: 'Deploys containerised services to managed cloud clusters.'
     }
   ],
   DevOps: [
     {
       name: 'Docker',
-      category: 'DevOps',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Writing multi-stage Dockerfiles, optimizing image size, managing non-root containers, and isolating dependencies.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Packages applications so they behave the same on every machine.'
     },
     {
       name: 'Docker Compose',
-      category: 'DevOps',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Multi-service local orchestration linking databases, Redis, microservices, and reverse proxies in unified networks.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Lets a new developer start the whole system locally in one command.'
     },
     {
       name: 'Nginx',
-      category: 'DevOps',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Reverse proxy configuration, SSL/TLS termination, rate limiting, and upstream load balancing.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Routes live traffic, enables HTTPS, and balances load across servers.'
     },
     {
       name: 'GitHub Actions',
-      category: 'DevOps',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Automated CI/CD workflows, automated unit tests, lint validation, and deployment triggers.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Automates testing and release, so deployments are repeatable.'
     }
   ],
   Architecture: [
     {
       name: 'Microservices',
-      category: 'Architecture',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Decomposing monolithic domains into independently deployable, bounded contexts communicating via gRPC and message brokers.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Splits large systems into independent services that teams can release separately.'
     },
     {
       name: 'API Gateway Pattern',
-      category: 'Architecture',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Centralizing client entry points, JWT authentication guards, rate-limiting, and request routing to internal services.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Gives clients one secure entry point, with login checks and traffic limits.'
     },
     {
       name: 'Event-Driven Systems',
-      category: 'Architecture',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Decoupling services through Redis Pub/Sub, background job queues, and webhook workers.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Moves slow work to the background, so users never wait on it.'
     },
     {
       name: 'RBAC (Role-Based Access)',
-      category: 'Architecture',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Hierarchical permission systems protecting sensitive endpoints based on roles, claims, and resource ownership.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Controls who can see or change what, based on their role.'
     },
     {
       name: 'Modular Monolith',
-      category: 'Architecture',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Structuring single-deployable applications with clean bounded modules that can be extracted into microservices when needed.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Keeps early products simple to run, and ready to split later.'
     }
   ],
   AI: [
     {
       name: 'RAG Architectures',
-      category: 'AI',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Retrieval-Augmented Generation linking vector search / embeddings with prompt contexts for verified domain responses.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Lets AI answer from company documents and data, instead of guessing.'
     },
     {
       name: 'Function & Tool Calling',
-      category: 'AI',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Equipping LLM agents with typed JSON schema tools that execute deterministic backend operations and database queries.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Allows AI assistants to perform real actions, such as lookups and updates.'
     },
     {
       name: 'LLM Applications',
-      category: 'AI',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Designing end-to-end intelligent applications with streaming responses, conversation state, and safety constraints.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Builds complete AI features, from chat experience to safety limits.'
     },
     {
       name: 'Prompt Engineering',
-      category: 'AI',
-      experienceLevel: 'Advanced',
-      usageDescription: 'Structuring system instructions, few-shot examples, and output formatting rules to enforce predictable agent behavior.'
+      experienceLevel: 'Strong',
+      usageDescription: 'Tunes AI instructions so results stay consistent and on-format.'
     },
     {
       name: 'AI + Backend Integration',
-      category: 'AI',
-      experienceLevel: 'Primary Core',
-      usageDescription: 'Bridging generative AI outputs with production relational databases, validation layers, and transactional workflows.'
+      experienceLevel: 'Daily',
+      usageDescription: 'Connects AI features to real databases and business rules in production.'
     }
   ]
 };

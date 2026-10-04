@@ -45,7 +45,7 @@ export const EngineeringPhilosophy: React.FC = () => {
   return (
     <Section
       id="philosophy"
-      index="03"
+      index="04"
       label="Principles"
       title="How I think about engineering."
       intro="Six habits that run in a loop: understand, design, build, measure, automate, ship, and back to the problem. Pick a step to see what I actually do."

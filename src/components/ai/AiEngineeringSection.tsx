@@ -31,7 +31,7 @@ export const AiEngineeringSection: React.FC = () => {
   return (
     <Section
       id="ai"
-      index="04"
+      index="05"
       label="Applied AI"
       title={
         <>

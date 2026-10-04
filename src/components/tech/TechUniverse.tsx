@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Layout, Server, Database, Sparkles, Cloud, Boxes, Network } from 'lucide-react';
 import { techUniverse } from '../../data/techStack';
-import { TechItem } from '../../types/portfolio';
+import { TechCategory, TechItem } from '../../types/portfolio';
 import { Section } from '../layout/Section';
 import { categoryTone, Tone } from '../ui/Tag';
 import { DevIllustration } from './DevIllustration';
@@ -41,12 +41,20 @@ const icons: Record<string, React.ElementType> = {
 };
 
 // Left side builds the product, right side runs it.
-const leftCats = ['Frontend', 'Backend', 'Database', 'AI'];
-const rightCats = ['Cloud', 'DevOps', 'Architecture'];
-const allTools = [...leftCats, ...rightCats].flatMap((c) => techUniverse[c] ?? []);
+const leftCats: TechCategory[] = ['Frontend', 'Backend', 'Database', 'AI'];
+const rightCats: TechCategory[] = ['Cloud', 'DevOps', 'Architecture'];
+// Flat auto-play order, each tool paired with the category it is shown under.
+const allTools: Selection[] = [...leftCats, ...rightCats].flatMap((cat) =>
+  (techUniverse[cat] ?? []).map((item) => ({ cat, item }))
+);
+
+interface Selection {
+  cat: TechCategory;
+  item: TechItem;
+}
 
 interface Wire {
-  cat: string;
+  cat: TechCategory;
   d: string;
   hub: { x: number; y: number };
   end: { x: number; y: number };
@@ -55,17 +63,17 @@ interface Wire {
 const CYCLE_MS = 4200;
 
 export const TechUniverse: React.FC = () => {
-  const [selected, setSelected] = useState<TechItem>(techUniverse['Backend'][0]);
-  const [hoverCat, setHoverCat] = useState<string | null>(null);
+  const [selected, setSelected] = useState<Selection>({ cat: 'Backend', item: techUniverse['Backend'][0] });
+  const [hoverCat, setHoverCat] = useState<TechCategory | null>(null);
   const [auto, setAuto] = useState(true);
   const [wires, setWires] = useState<Wire[]>([]);
   const [inView, setInView] = useState(false);
 
   const wrapRef = useRef<HTMLDivElement>(null);
   const hubRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const cardRefs = useRef<Partial<Record<TechCategory, HTMLDivElement | null>>>({});
 
-  const activeCat = hoverCat ?? selected.category;
+  const activeCat = hoverCat ?? selected.cat;
 
   // Measure card and hub positions and draw a curve from each card to the hub's rim.
   const measure = useCallback(() => {
@@ -124,18 +132,18 @@ export const TechUniverse: React.FC = () => {
   useEffect(() => {
     if (!auto || !inView || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const t = window.setTimeout(() => {
-      const i = allTools.findIndex((x) => x.name === selected.name);
+      const i = allTools.findIndex((x) => x.item.name === selected.item.name);
       setSelected(allTools[(i + 1) % allTools.length]);
     }, CYCLE_MS);
     return () => window.clearTimeout(t);
   }, [auto, inView, selected]);
 
-  const pick = (item: TechItem) => {
+  const pick = (cat: TechCategory, item: TechItem) => {
     setAuto(false);
-    setSelected(item);
+    setSelected({ cat, item });
   };
 
-  const renderCard = (cat: string, i: number, side: 'left' | 'right') => {
+  const renderCard = (cat: TechCategory, i: number, side: 'left' | 'right') => {
     const items = techUniverse[cat] ?? [];
     const tone = categoryTone[cat] ?? 'neutral';
     const Icon = icons[cat] ?? Boxes;
@@ -169,13 +177,13 @@ export const TechUniverse: React.FC = () => {
         </div>
         <div className="mt-3.5 flex flex-wrap gap-1.5">
           {items.map((item) => {
-            const isSelected = selected.name === item.name;
-            const isCore = item.experienceLevel === 'Primary Core';
+            const isSelected = selected.item.name === item.name;
+            const isCore = item.experienceLevel === 'Daily';
             return (
               <button
                 key={item.name}
                 type="button"
-                onClick={() => pick(item)}
+                onClick={() => pick(cat, item)}
                 aria-pressed={isSelected}
                 className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[11.5px] transition-all duration-200 hover:-translate-y-px ${
                   isSelected ? pillActive[tone] : `${pillIdle[tone]} hover:bg-ink/[0.05]`
@@ -191,15 +199,15 @@ export const TechUniverse: React.FC = () => {
     );
   };
 
-  const selTone = toneVar[categoryTone[selected.category] ?? 'neutral'];
+  const selTone = toneVar[categoryTone[selected.cat] ?? 'neutral'];
 
   return (
     <Section
       id="stack"
-      index="05"
+      index="06"
       label="Stack"
       title="Tools I reach for, and what for."
-      intro="Left side builds the product, right side runs it. Everything here has shipped in production; a filled dot marks a daily driver. Pick any tool to see how I use it."
+      intro="Left side builds the product, right side runs it. Everything here has shipped in production. A filled dot marks a daily tool. Pick any tool for a plain-language note on what I use it for."
     >
       <div
         ref={wrapRef}
@@ -273,12 +281,12 @@ export const TechUniverse: React.FC = () => {
               className="absolute -top-2 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-t border-l border-line bg-raised"
               aria-hidden="true"
             />
-            <div key={selected.name} className="anim-in">
+            <div key={selected.item.name} className="anim-in">
               <p className="font-mono text-[10px] uppercase tracking-wider" style={{ color: selTone }}>
-                {selected.category} · {selected.experienceLevel}
+                {selected.cat} · {selected.item.experienceLevel}
               </p>
-              <h3 className="mt-1 font-serif text-[28px] leading-tight text-ink">{selected.name}</h3>
-              <p className="mt-1.5 text-[13px] leading-relaxed text-body">{selected.usageDescription}</p>
+              <h3 className="mt-1 font-serif text-[28px] leading-tight text-ink">{selected.item.name}</h3>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-body">{selected.item.usageDescription}</p>
             </div>
             {auto && inView && (
               <p className="mt-3 font-mono text-[9.5px] text-faint">auto-playing · tap a tool to stop</p>

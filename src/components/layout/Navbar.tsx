@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { Zap } from 'lucide-react';
 import { Container } from './Section';
 import { ThemeToggle } from './ThemeToggle';
+import { QuickReviewModal } from '../quick/QuickReviewModal';
 
 interface NavbarProps {
   onOpenResume: () => void;
@@ -15,10 +17,14 @@ const navLinks = [
   { label: 'Contact', id: 'contact' }
 ];
 
+// Desktop opens the summary as a popup; phones just scroll to the section.
+const mobileLinks = [{ label: 'Quick review', id: 'quick-review' }, ...navLinks];
+
 export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [quickOpen, setQuickOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const [hovered, setHovered] = useState<string | null>(null);
   const [pill, setPill] = useState<{ left: number; width: number } | null>(null);
@@ -59,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
 
   // Lock page scroll and allow Escape while the mobile menu is open.
   useEffect(() => {
-    if (!menuOpen) return;
+    if (!menuOpen || quickOpen) return;
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false);
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKey);
@@ -67,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', onKey);
     };
-  }, [menuOpen]);
+  }, [menuOpen, quickOpen]);
 
   const floating = scrolled && !menuOpen;
 
@@ -143,6 +149,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
             </nav>
 
             <div className="hidden items-center gap-2 lg:flex">
+              <button
+                type="button"
+                onClick={() => setQuickOpen(true)}
+                className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-ok/40 bg-ok/[0.07] px-3 py-1.5 font-mono text-[11.5px] text-ok transition-colors hover:bg-ok/[0.14]"
+                aria-haspopup="dialog"
+                title="A 10-second summary for recruiters"
+              >
+                <Zap className="h-3.5 w-3.5" aria-hidden="true" />
+                Quick review
+              </button>
               <ThemeToggle />
               <button
                 type="button"
@@ -197,7 +213,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           <Container className="flex min-h-full flex-col justify-between py-8">
             <nav aria-label="Mobile">
               <ol>
-                {navLinks.map((link, i) => (
+                {mobileLinks.map((link, i) => (
                   <li
                     key={link.id}
                     className="anim-in border-b border-line"
@@ -233,6 +249,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
           </Container>
         </div>
       )}
+
+      <QuickReviewModal
+        open={quickOpen}
+        onClose={() => setQuickOpen(false)}
+        onOpenResume={onOpenResume}
+      />
     </header>
   );
 };

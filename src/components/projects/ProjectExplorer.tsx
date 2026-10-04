@@ -44,7 +44,7 @@ export const ProjectExplorer: React.FC = () => {
   return (
     <Section
       id="projects"
-      index="01"
+      index="02"
       label="Selected work"
       title={
         <>

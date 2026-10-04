@@ -70,7 +70,7 @@ export const ExperienceTimeline: React.FC = () => {
   return (
     <Section
       id="experience"
-      index="06"
+      index="07"
       label="Experience"
       title={
         <>
